@@ -65,36 +65,24 @@
   <div id="app-loader">
     <div class="spinner"></div>
     <p class="mt-4 text-slate-500 font-medium text-sm">Khởi tạo ứng dụng quản lý...</p>
-    <div id="local-error" class="hidden mt-6 p-6 max-w-sm bg-white border border-red-100 rounded-3xl text-center shadow-2xl">
-      <div class="text-3xl mb-3">⚠️</div>
-      <p class="text-red-600 font-bold text-lg">Lỗi Bảo Mật Trình Duyệt</p>
-      <p class="text-slate-600 text-sm mt-3 leading-relaxed">
-        iPhone không cho phép chạy app trực tiếp từ file. Bạn hãy tải code này lên <b>GitHub</b> và kết nối với <b>Vercel</b> (miễn phí) để cài đặt vào iPhone nhé!
-      </p>
-    </div>
   </div>
 
   <div id="root"></div>
 
-  <!-- Vite sẽ tự động xử lý file này khi build -->
-  <script type="module" src="/index.tsx"></script>
+  <!-- Sử dụng đường dẫn tương đối để Vite dễ dàng phân giải -->
+  <script type="module" src="./index.tsx"></script>
 
   <script>
-    if (window.location.protocol === 'file:') {
-      document.getElementById('local-error').classList.remove('hidden');
-      document.querySelector('.spinner').style.display = 'none';
-      document.querySelector('#app-loader p').style.display = 'none';
-    }
-    
     window.addEventListener('load', () => {
       setTimeout(() => {
         const loader = document.getElementById('app-loader');
-        if (loader && window.location.protocol !== 'file:') {
+        if (loader) {
           loader.style.opacity = '0';
           setTimeout(() => loader.remove(), 500);
         }
       }, 800);
     });
   </script>
+<script type="module" src="/index.tsx"></script>
 </body>
 </html>
